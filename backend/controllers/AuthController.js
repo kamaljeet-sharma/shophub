@@ -8,8 +8,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const AuthController = express();
-AuthController.use(express.json());
+const AuthController = express.Router();
 
 // Register
 AuthController.post("/register", async (req, res) => {
@@ -43,7 +42,7 @@ AuthController.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email: email });
     if (!user) {
-      return res.status(400).json({ message: "user already exist" });
+      return res.status(400).json({ message: "User not found" });
     }
 
     //password matching...
@@ -145,12 +144,17 @@ AuthController.delete("/deactivate", async (req, res) => {
     const { username } = req.body;
     const exist = await User.findOne({ username });
     if (!exist) return res.status(404).json({ message: "user not availble" });
-    const deletedUser = await User.findByIdAndDelete({ username });
-    if (!deletedUser)
+   const deletedUser = await User.findOneAndDelete({ username });
+    if (!deletedUser) 
       return res.status(400).json({ message: "error deleting" });
 
     res.status(200).json({ message: "profile deleted successfuly" });
   } catch (err) {}
+});
+
+
+AuthController.get("/", (req, res) => {
+  res.send("Auth API Working");
 });
 
 export default AuthController;
