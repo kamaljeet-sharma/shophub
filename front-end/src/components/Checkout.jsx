@@ -26,7 +26,7 @@ const Checkout = () => {
     (acc, item) =>
       acc +
       (item.price - (item.price * item.discountPercentage) / 100) *
-        item.quantity,
+      item.quantity,
     0
   );
   const total = subtotal;
@@ -44,7 +44,7 @@ const Checkout = () => {
       try {
         const token = localStorage.getItem("token");
         await axios.post(
-          "http://localhost:3000/api/orders",
+          "https://your-backend.onrender.com/api/orders",
           {
             items: cart.map((item) => ({
               id: item.id,
@@ -96,7 +96,7 @@ const Checkout = () => {
         try {
           const token = localStorage.getItem("token");
           await axios.post(
-            "http://localhost:3000/api/orders",
+            "https://your-backend.onrender.com/api/orders",
             {
               items: cart.map((item) => ({
                 id: item.id,
@@ -190,22 +190,20 @@ const Checkout = () => {
               <div className="grid grid-cols-2 gap-4">
                 <button
                   onClick={() => setPaymentMethod("stripe")}
-                  className={`p-4 rounded-xl border-2 transition-all flex flex-col items-center justify-center space-y-2 ${
-                    paymentMethod === "stripe"
+                  className={`p-4 rounded-xl border-2 transition-all flex flex-col items-center justify-center space-y-2 ${paymentMethod === "stripe"
                       ? "border-cyan-500 bg-cyan-50 text-cyan-700"
                       : "border-gray-200 hover:border-gray-300 text-gray-600"
-                  }`}
+                    }`}
                 >
                   <CreditCard className="h-8 w-8" />
                   <span className="font-medium">Credit/Debit Card</span>
                 </button>
                 <button
                   onClick={() => setPaymentMethod("razorpay")}
-                  className={`p-4 rounded-xl border-2 transition-all flex flex-col items-center justify-center space-y-2 ${
-                    paymentMethod === "razorpay"
+                  className={`p-4 rounded-xl border-2 transition-all flex flex-col items-center justify-center space-y-2 ${paymentMethod === "razorpay"
                       ? "border-blue-500 bg-blue-50 text-blue-700"
                       : "border-gray-200 hover:border-gray-300 text-gray-600"
-                  }`}
+                    }`}
                 >
                   <div className="h-8 w-8 bg-blue-900 rounded flex items-center justify-center text-white font-bold text-xs">
                     RZP

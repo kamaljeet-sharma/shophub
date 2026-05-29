@@ -13,7 +13,6 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  //TODO: add update profile functionality
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -31,7 +30,7 @@ const Profile = () => {
 
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/auth/profile",
+          "https://your-backend.onrender.com/api/auth/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -65,7 +64,7 @@ const Profile = () => {
   };
 
   const handleEditProfile = () => {
-    setEditName(user.username);
+    setEditName(user?.username || "");
     setIsEditing(true);
   };
 
@@ -73,7 +72,7 @@ const Profile = () => {
     const token = localStorage.getItem("token");
     try {
       await axios.put(
-        "http://localhost:3000/api/auth/profile",
+        "https://your-backend.onrender.com/api/auth/profile",
         { username: editName },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -81,7 +80,6 @@ const Profile = () => {
       );
 
       setUser((prev) => ({ ...prev, username: editName }));
-      // Update local storage if needed
       const storedUser = JSON.parse(localStorage.getItem("user"));
       if (storedUser) {
         storedUser.username = editName;
@@ -90,7 +88,6 @@ const Profile = () => {
       setIsEditing(false);
     } catch (err) {
       console.error("Failed to update profile", err);
-      // Optionally set an error state here specifically for the edit action
       alert("Failed to update profile");
     }
   };
@@ -135,9 +132,7 @@ const Profile = () => {
               className="bg-white/20 backdrop-blur-md text-white p-2 rounded-xl hover:bg-white/30 transition-colors flex items-center space-x-2 border border-white/30"
             >
               <LogOut className="h-5 w-5" />
-              <span className="font-medium text-sm hidden sm:inline">
-                Logout
-              </span>
+              <span className="font-medium text-sm hidden sm:inline">Logout</span>
             </button>
           </div>
 
@@ -159,9 +154,7 @@ const Profile = () => {
                       autoFocus
                     />
                   ) : (
-                    <h1 className="text-3xl font-bold text-gray-900">
-                      {user?.username}
-                    </h1>
+                    <h1 className="text-3xl font-bold text-gray-900">{user?.username}</h1>
                   )}
                   <p className="text-gray-500">Member</p>
                 </div>
@@ -196,9 +189,7 @@ const Profile = () => {
             </div>
 
             <div className="sm:hidden mb-6">
-              <h1 className="text-2xl font-bold text-gray-900">
-                {user?.username}
-              </h1>
+              <h1 className="text-2xl font-bold text-gray-900">{user?.username}</h1>
               <p className="text-gray-500">Member</p>
             </div>
 
@@ -209,12 +200,8 @@ const Profile = () => {
                     <User className="h-5 w-5 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-500">
-                      Full Name
-                    </p>
-                    <p className="text-gray-900 font-medium mt-1">
-                      {user?.username}
-                    </p>
+                    <p className="text-sm font-medium text-gray-500">Full Name</p>
+                    <p className="text-gray-900 font-medium mt-1">{user?.username}</p>
                   </div>
                 </div>
               </div>
@@ -225,12 +212,8 @@ const Profile = () => {
                     <Mail className="h-5 w-5 text-cyan-600" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-500">
-                      Email Address
-                    </p>
-                    <p className="text-gray-900 font-medium mt-1">
-                      {user?.email}
-                    </p>
+                    <p className="text-sm font-medium text-gray-500">Email Address</p>
+                    <p className="text-gray-900 font-medium mt-1">{user?.email}</p>
                   </div>
                 </div>
               </div>
@@ -242,9 +225,7 @@ const Profile = () => {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-500">Joined</p>
-                    <p className="text-gray-900 font-medium mt-1">
-                      December 2023
-                    </p>
+                    <p className="text-gray-900 font-medium mt-1">December 2023</p>
                   </div>
                 </div>
               </div>
@@ -255,9 +236,7 @@ const Profile = () => {
                     <MapPin className="h-5 w-5 text-green-600" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-500">
-                      Location
-                    </p>
+                    <p className="text-sm font-medium text-gray-500">Location</p>
                     <p className="text-gray-900 font-medium mt-1">Not Set</p>
                   </div>
                 </div>

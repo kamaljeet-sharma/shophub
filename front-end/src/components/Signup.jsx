@@ -20,7 +20,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/register",
+        "https://your-backend.onrender.com/api/auth/register",
         formData
       );
       alert("User registered successfully");
@@ -31,7 +31,7 @@ const Signup = () => {
       console.error(error);
       alert(
         error.response?.data?.message ||
-          "Registration failed. Please try again."
+        "Registration failed. Please try again."
       );
     }
   };
