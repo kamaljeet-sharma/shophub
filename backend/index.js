@@ -1,10 +1,11 @@
-import express from "express";
 import dotenv from "dotenv";
+dotenv.config();
+import express from "express";
 import AuthController from "./controllers/AuthController.js";
 import OrderController from "./controllers/OrderController.js";
 import connectDB from "./controllers/dbController.js";
 import cors from "cors";
-dotenv.config();
+
 
 const app = express();
 app.use(express.json());

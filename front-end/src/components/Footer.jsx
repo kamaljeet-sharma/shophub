@@ -32,7 +32,7 @@ const Footer = () => {
 
             <div className="flex space-x-4 pt-2">
               <a
-                href="https://github.com/sandeepsingh9569"
+                href="https://github.com/kamaljeet-sharma"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -42,7 +42,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/sandeep-singh-864365370/"
+                href="https://www.linkedin.com/in/kamaljeet-sharma6321/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -52,7 +52,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://twitter.com/"
+                href="https://x.com/kamaljeet6321"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
@@ -62,7 +62,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://www.instagram.com/sandeepsinghchauhan676"
+                href="https://www.instagram.com/kamaljeet5377/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
