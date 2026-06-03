@@ -94,28 +94,6 @@ PORT=8080
 npm start
 ```
 
----
-
-## 💻 Screenshots
-
-### Home Page
-
-(Add Screenshot Here)
-
-### Product Page
-
-(Add Screenshot Here)
-
-### Cart Page
-
-(Add Screenshot Here)
-
-### Admin Dashboard
-
-(Add Screenshot Here)
-
----
-
 ## 🌐 Future Improvements
 
 * Online Payment Gateway
